@@ -139,7 +139,7 @@ Here are the references you can find in annotations:
 * *ECPP*: ***Effective C++, Meyers***
 * *EMCPP*: ***Effective Modern C++, Meyers***
 
-# extensions
+# Extensions
 
 A feature-limited extension for vscode is available.
 
