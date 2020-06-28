@@ -1,0 +1,58 @@
+[
+    {
+        "id": "lambda_root",
+        "repeatable": false,
+        "desc": "lambda core description",
+        "annotations" : [
+            {"type": "CORRECT", "ref" :"cppcore.C.170", "msg": "use generic lambda if you feel like overloading a lambda"}
+        ],
+        "steps" : [
+            {"id" :"scope", "desc": "lambda scope", "ref": "recpp.internal"},
+            {"id" :"recursion", "desc": "recursive lambda", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "tpl_parameters",
+        "repeatable": true,
+        "desc": "lambda template parameters (c++ 20)",
+        "annotations": [],
+        "steps" : [
+            {"id" :"name", "desc": "template parameter full description", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "func_parameters",
+        "repeatable": true,
+        "desc": "lambda parameters",
+        "annotations": [
+            {"type": "USA,REL", "ref" :"cppcore.I.4", "msg": "name lambda parameters so that they are not ambigous"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "parameter naming", "ref": "recpp.internal"},
+            {"id" :"type", "desc": "parameter type", "ref": "cppcore.I.F.15"}
+        ]
+    },
+    {
+        "id": "capture_list",
+        "repeatable": true,
+        "desc": "lambda capture list",
+        "annotations": [],
+        "steps" : [
+            {"id" :"name", "desc": "captured item full description", "ref": "recpp.internal"},
+            {"id" :"ref", "desc": "ref capture for local scope lambda", "ref": "cppcore.F.52"},
+            {"id" :"nonref", "desc": "nonref capture for non-local scope lambda", "ref": "cppcore.F.52"},
+            {"id" :"this", "desc": "this capture implies explicit capture", "ref": "cppcore.F.54"}
+        ]
+    },
+    {
+        "id": "lambda_attr",
+        "repeatable": false,
+        "desc": "lambda attributes",
+        "annotations": [],
+        "steps" : [
+            {"id" :"mutable", "desc": "capacity to modify var captured by copy", "ref": "recpp.internal"},
+            {"id" :"constexpr", "desc": "lambda constexpr abilities", "ref": "cppcore.F.4"}
+            
+        ]
+    }
+]

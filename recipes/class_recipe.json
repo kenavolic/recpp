@@ -1,0 +1,74 @@
+[
+    {
+        "id": "class_root",
+        "repeatable": false,
+        "desc": "class core description",
+        "annotations" : [
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use a class when a function suffices (abstraction has a cost)"},
+            {"type": "MAINT,REL,USA,TEST", "ref" :"cppcore.C.10", "msg": "prefer concrete (aka value class)"},
+            {"type": "MAINT", "ref" :"cppcore.C.2,CCS.41", "msg": "use struct if data members can vary independently"},
+            {"type": "PERF", "ref" :"ECPP.31", "msg": "provide separate file for class declaration and definition"},
+            {"type": "MAINT,USA,REL", "ref" :"CCS.5", "msg": "design classes with single responsability (Solid)"},
+            {"type": "MAINT,USA,SEC", "ref" :"recpp.internal", "msg": "make fine-grained interface with high cohesion (solId)"},
+            {"type": "USA,TEST,REL", "ref" :"recpp.internal,ECPP.18", "msg": "make public interfaces testable, easy to use, hard to misuse"},
+            {"type": "MAINT,USA", "ref" :"recpp.internal", "msg": "beware feature envy and comply with law of Demeter in class design"},
+            {"type": "USA,REL", "ref" :"recpp.internal", "msg": "enforce temporal coupling between functions in code not in comments"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "order and pack members to optimize layout"},
+            {"type": "CON", "ref" :"recpp.internal", "msg": "make a type thread-safe if it is its primary purpose to be used in a concurrent context"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "class naming", "ref": "recpp.internal"},
+            {"id" :"responsability", "desc": "class role", "ref": "cppcore.C.2,CCS.5"},
+            {"id" :"invariant", "desc": "class invariants", "ref": "cppcore.C.2"},
+            {"id" :"thread_safe", "desc": "class thread safety", "ref": "recpp.internal"},
+            {"id" :"type", "desc": "class type", "ref": "cppcore.C.10"}
+        ]
+    },
+    {
+        "id": "tpl_parameters",
+        "repeatable": true,
+        "desc": "class template parameters",
+        "annotations": [
+            {"type": "USA,EXT", "ref" :"cppcore.T.84", "msg": "consider using a non-generic class core implementation to provide an ABI-stable interface"},
+            {"type": "PERF", "ref" :"ECPP.44", "msg": "factor members/methods non-dependent of template parameters out-of-class (base class)"},
+            {"type": "PERF", "ref" :"cppcore.T.62, recpp.internal", "msg": "prefer template parameters bound to methods if possible"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "template parameter naming", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "concrete",
+        "repeatable": false,
+        "desc": "concrete class description",
+        "annotations" : [],
+        "steps" : [
+            {"id" :"abstraction", "desc": "class abstraction", "ref": "cppcore.I.27"},
+            {"id" :"raii", "desc": "class resource holding", "ref": "cppcore.C.43"},
+            {"id" :"specials", "desc": "class special members", "ref": "cppcore.C.21"},
+            {"id" :"alloc", "desc": "class custom allocators", "ref": "recpp.internal"},
+            {"id" :"init_list_ctor", "desc": "class ctor taking intializer list", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "hierarchy",
+        "repeatable": false,
+        "desc": "hierarchy class description",
+        "annotations" : [
+            {"type": "MAINT,EXT", "ref" :"cppcore.C.120,ECPP.32", "msg": "use hierarchy for inherent hierarchical structure (inheritance of behavior)"},
+            {"type": "MAINT", "ref" :"cppcore.C.129", "msg": "consider dual hierachy to separate interface from impl"},
+            {"type": "MAINT,COMP", "ref" :"recpp.internal", "msg": "design classes opened for extension, closed to modification (sOlid)"},
+            {"type": "MAINT,EXT,INTEROP", "ref" :"recpp.internal, CCS.36", "msg": "design classes that depend on abstraction not on concretion (aka prefer abstract interface) (soliD)"},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "check derived classes are substituable for their base (soLid)"},
+            {"type": "MAINT,PERF", "ref" :"recpp.internal,CCS.34", "msg": "consider alternatives to subclassing (e.g. composition, strategy pattern, discriminating unions)"},
+            {"type": "MAINT,PERF", "ref" :"cppcore.T.80", "msg": "do not naively template a class hierarchy (code bloat)"},
+            {"type": "EXT", "ref" :"cppcore.C.139", "msg": "use final sparingly"}
+        ],
+        "steps" : [
+            {"id" :"base", "desc": "class level in the hierarchy", "ref": "recpp.internal"},
+            {"id" :"interface", "desc": "interface flag", "ref": "cppcore.C.121, cppcore.C.122"},
+            {"id" :"clonable", "desc": "clonability in the hierarchy", "ref": "recpp.internal"},
+            {"id" :"inherited_init", "desc": "custom initialization or inherited one", "ref": "cppcore.C.52"}
+        ]
+    }
+]

@@ -1,0 +1,150 @@
+[
+    {
+        "id": "expression",
+        "repeatable": false,
+        "desc": "expression",
+        "annotations" : [
+            {"type": "MAINT", "ref" :"CCS.17", "msg": "avoid magic numbers"},
+            {"type": "MAINT,REL", "ref" :"cppcore.ES.5,ECPP.27", "msg": "keep scopes small"},
+            {"type": "MAINT", "ref" :"cppcore.ES.11", "msg": "use auto to avoid redundant repetition of type names"},
+            {"type": "MAINT", "ref" :"cppcore.ES.21,CCS.18", "msg": "don't introduce a variable before you need to use it"},
+            {"type": "REL", "ref" :"cppcore.ES.25", "msg": "declare an object const or constexpr unless you want to modify its value later on"},
+            {"type": "MAINT", "ref" :"cppcore.ES.28", "msg": "use lambdas for complex initialization, especially of const variables"},
+            {"type": "REL,PORT,TEST", "ref" :"cppcore.ES.30", "msg": "don't use macro for text manipulation"},
+            {"type": "MAINT,REL,CORRECT", "ref" :"cppcore.ES.47,EMCPP.8", "msg": "use nullptr instead of 0 or NULL"},
+            {"type": "REL", "ref" :"CCS.93", "msg": "do not use static_cast on pointers"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "statement",
+        "repeatable": false,
+        "desc": "statement",
+        "annotations" : [
+            {"type": "MAINT", "ref" :"recpp.internal", "msg": "encapsulate conditionals in function and prefer positive conditionals"},
+            {"type": "PERF", "ref" :"cppcore.ES.70", "msg": "prefer swith over if"},
+            {"type": "REL", "ref" :"cppcore.ES.79", "msg": "use default switch case to handle common case only"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "in if/else statement put straight case in the if"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "order switch by frequency"},
+            {"type": "SEC", "ref" :"recpp.internal", "msg": "beware TOCTOU in conditionally checked blocks"},
+            {"type": "MAINT", "ref" :"cppcore.ES.73", "msg": "prefer while to for when there is no obvious loop var"},
+            {"type": "PERF,REL", "ref" :"CCS.84", "msg": "prefer algorithm to handwritten loops (e.g. std::transform, std::for_each,std::ranges"},
+            {"type": "MAINT", "ref" :"cppcore.ES.77", "msg": "consider a loop with a break as a good candidate for a function"},
+            {"type": "MAINT", "ref" :"cppcore.ES.77", "msg": "consider a loop with a continue as a good candidate for an if statement"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "avoid data-dependant branching in critical loop"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "make the busiest loop the more nested"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "consider getting conditionals out of a loop"},
+            {"type": "PERF", "ref" :"recpp.internal,ECPP.27", "msg": "measure the delta between a local loop variable or a out-of-loop variable assigned at each round"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "arithmetic",
+        "repeatable": false,
+        "desc": "arithmetic",
+        "annotations" : [
+            {"type": "REL", "ref" :"cppcore.ES.101", "msg": "use unsigned types for bit manipulation"},
+            {"type": "USA", "ref" :"cppcore.ES.102,cppcore.ES.103", "msg": "use signed types for regular arithmetic, unsigned for modulo arithmetic"},
+            {"type": "REL,SEC", "ref" :"cppcore.ES.103,CERT.INT30-C", "msg": "check for overflow"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "error",
+        "repeatable": false,
+        "desc": "error handling",
+        "annotations" : [
+            {"type": "REL", "ref" :"CCS.14", "msg": "fail as soon as possible (compile-time > link-time > runtime)"},
+            {"type": "REL", "ref" :"cppcore.ES.15,CSS.73", "msg": "throw by value, catch exception by ref"},
+            {"type": "REL", "ref" :"recpp.internal", "msg": "catch at the closest location you can react"},
+            {"type": "REL", "ref" :"ECPP.49", "msg": "consider a custom handler to handle memory allocation failure"},
+            {"type": "USA,INTEROP", "ref" :"recpp.internal,CCS.62,CCS.74", "msg": "use exceptions conversion utilities at boundaries"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "resource",
+        "repeatable": false,
+        "desc": "resource management",
+        "annotations" : [
+            {"type": "REL", "ref" :"recpp.internal", "msg": "use stl raii abstractions (lock_guard, unique_lock, etc.)"},
+            {"type": "REL", "ref" :"cppcore.C.149", "msg": "use smart pointers for heap-based resource management"},
+            {"type": "REL,PERF", "ref" :"cppcore.C.150,cppcore.C.151,EMCPP.21", "msg": "use make_xxx to construct object owned by smart pointers"},
+            {"type": "CORRECT,REL", "ref" :"EMCPP.21", "msg": "beware using make_xxx with initializer list"},
+            {"type": "PERF", "ref" :"EMCPP.21", "msg": "do not use make_shared with objects with custom new/delete"},
+            {"type": "PERF", "ref" :"EMCPP.21", "msg": "do not use make_shared for large objects when some weak_ptrs are used and outlive the shared_ptrs in a significant manner"},
+            {"type": "REL", "ref" :"cppcore.R.24,EMCPP.20", "msg": "use std::weak_ptr to break cycles of shared_ptrs"},
+            {"type": "REL", "ref" :"cppcore.R.37", "msg": "do not pass a pointer or reference obtained from an aliased smart pointer"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "thread",
+        "repeatable": false,
+        "desc": "concurrency management",
+        "annotations" : [
+            {"type": "CON,PERF", "ref" :"recpp.internal", "msg": "think data-oriented design (inherently more suited to concurrency)"},
+            {"type": "CON,MAINT,USA", "ref" :"cppcore.CP.4,EMCPP.241", "msg": "prefer use of c++ task-based api (i.e. std::async, std::packaged_task) to thread-based api"},
+            {"type": "CON,MAINT", "ref" :"recpp.internal", "msg": "separate concurrency code (e.g. proxy class for thread-safety)"},
+            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "think transaction (Atomicity, Consitency, Isolation, Durability)"},
+            {"type": "CON,PERF", "ref" :"cppcore.CP.41", "msg": "minimize thread creation and destruction (use of thread pools?)"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.23", "msg": "think of a joining thread as a scoped container (aka std::jthread)"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.3", "msg": "minimize explicit sharing of writable data"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.31", "msg": "pass small amounts of data between threads by value, rather than by reference or pointer"},
+            {"type": "CON,PERF", "ref" :"recpp.internal", "msg": "minimize sharing of data with same locality between threads (to avoid cache ping-pong)"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.20", "msg": "use raii, never plain lock/unlock"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.42", "msg": "don't wait without a condition"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.22", "msg": "never call unknown code while holding a lock (e.g. a callback given as argument)"},
+            {"type": "CON,PERF", "ref" :"cppcore.CP.43", "msg": "minimize time spent in a critical section"},
+            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "use std::lock + lock_guard or std::scoped_lock (c++17) to avoid deadlock"},
+            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "beware std::function that is not thread-compatible"},
+            {"type": "CON", "ref" :"recpp.internal", "msg": "design thread-safe block of code that does not call any thread-hostile function and, do whatever he wants with input of thread-safe type or not used by other threads but does not mutate an input of thread-compatible type"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "performance",
+        "repeatable": false,
+        "desc": "performance requirements",
+        "annotations" : [
+            {"type": "REF", "ref" :"recpp.internal", "msg": "check the ds and algo recipes if data structures or algorithms are involved"},
+            {"type": "REF", "ref" :"recpp.internal", "msg": "check the thread section, if concurrency is involved"},
+            {"type": "REF", "ref" :"recpp.internal", "msg": "check the statement section, if conditionals and loops are involved"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "think data-oriented design (inherently more locality in your data)"},
+            {"type": "MAINT,PERF", "ref" :"cppcore.per.2,cppcore.per.3,cppcore.per.6,CCS.6", "msg": "prefer readibility in non-critical code, don't optimize prematurely without measuring first"},
+            {"type": "PERF,TEST", "ref" :"recpp.internal", "msg": "write your requirements and benchmark them"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "replace conditionals with arithmetics"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "keep code flat"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "decrease dynamic alloc, function calls, decision making, code size (locality)"},
+            {"type": "PERF", "ref" :"cppcore.per.11", "msg": "move computation/checks from runtime to compile-time (e.g. expression template)"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "pre-compute and/or cache frequently processor consuming used results (e.g. cache class member into local variable)"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "try to order data structures, compose data layout and order computations in a way that allows maximum use of the cache"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "consider something smaller than bool for binary states"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "pack your struct"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use std::endl (flush)"},
+            {"type": "PERF", "ref" :"ECPP.28", "msg": "do not use dynamic_cast in performance critical code"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use exception throwing in performance critical code where the error case arises often"}
+        ],
+        "steps" : [
+        ]
+    },
+    {
+        "id": "style",
+        "repeatable": false,
+        "desc": "code style",
+        "annotations" : [
+            {"type": "MAINT", "ref" :"cppcore.NL.7", "msg": "make the leght of a name roughly proprtionnal to the length of its scope"},
+            {"type": "MAINT", "ref" :"cppcore.E.5", "msg": "don't use ALL_CAPS for enumerators"},
+            {"type": "MAINT", "ref" :"recpp.internal", "msg": "name interface after functionnality they abstract, classes after how they implement the interface"},
+            {"type": "MAINT", "ref" :"recpp.internal", "msg": "enforce style with tools not manuals (i.e. clang-format, clang-tidy)"}
+        ],
+        "steps" : [
+        ]
+    }
+]

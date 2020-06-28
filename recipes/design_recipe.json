@@ -1,0 +1,25 @@
+[
+    {
+        "id": "design_root",
+        "repeatable": false,
+        "desc": "design core description",
+        "annotations" : [
+            {"type": "*", "ref" :"recpp.internal", "msg": "don't be dogmatic in your design strategy (e.g. OOP for one subsytem, data-oriented for another)"},
+            {"type": "*", "ref" :"recpp.internal", "msg": "think if your problem better solved as a data transformation problem or a conceptual representation of the reality?"},
+            {"type": "MAINT,TEST", "ref" :"CCS.6", "msg": "Keep It (as) Stupid Simple (as possible)"},
+            {"type": "MAINT,PERF", "ref" :"recpp.internal", "msg": "Don't Repeat Yourself (apart for breaking coupling or for performance)"},
+            {"type": "*", "ref" :"recpp.internal", "msg": "think reponsabilities, collaboration, interface and constraints in your design"},
+            {"type": "MAINT,SEC", "ref" :"recpp.internal", "msg": "design with high-cohesion (change together, used together) and loose coupling for components and packages"},
+            {"type": "TEST", "ref" :"recpp.internal", "msg": "design for testability"},
+            {"type": "*", "ref" :"recpp.internal", "msg": "design in compliance with Architectural Significant Requirements (*ility, etc.)"},
+            {"type": "MAINT,USA,SEC", "ref" :"recpp.internal", "msg": "avoid disjoint functionnalities (low used feature surface vs attack surface ratio)"},
+            {"type": "REL,CON", "ref" :"cppcore.I.3, recpp.internal", "msg": "avoid singleton (prefer dependency injection)"},
+            {"type": "REL", "ref" :"recpp.internal,CCS.69,ECPP.49", "msg": "design an error handling strategy (e.g.: api boundary conversion, memory allocation failure (new_handler), error type handling (programmer error vs abstract machine unrecoverable error vs user recoverable error)"}
+        ],
+        "steps" : [
+            {"id" :"primary_concern", "desc": "primary concern for design", "ref": "recpp.internal"},
+            {"id" :"system", "desc": "system architecture details", "ref": "recpp.internal"},
+            {"id" :"unit", "desc": "unit design details", "ref": "recpp.internal"}
+        ]
+    }
+]

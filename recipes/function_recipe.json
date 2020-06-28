@@ -1,0 +1,111 @@
+[
+    {
+        "id": "func_root",
+        "repeatable": false,
+        "desc": "function core description",
+        "annotations" : [
+            {"type": "USA", "ref" :"recpp.internal", "msg": "name function to reflect its responsability"},
+            {"type": "MAINT", "ref" :"recpp.internal", "msg": "prefer non-member non-friend function"},
+            {"type": "USA", "ref" :"ECPP.18", "msg": "design your function to be easy to use, hard to misuse"},
+            {"type": "TEST", "ref" :"recpp.internal", "msg": "design your function to be easily testable"},
+            {"type": "CON,REL", "ref" :"EMCPP.16", "msg": "make const member function thread-safe"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "function naming", "ref": "recpp.internal"},
+            {"id" :"type", "desc": "function type (class or free)", "ref": "recpp.internal,cppcore.C.4"},
+            {"id" :"responsability", "desc": "function role", "ref": "recpp.internal"},
+            {"id" :"thread_safe", "desc": "function thread safety", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "tpl_parameters",
+        "repeatable": true,
+        "desc": "function template parameters",
+        "annotations": [
+            {"type": "USA", "ref" :"recpp.internal", "msg": "place non deductible template parameters at the beginning"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "template parameter full description", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "func_parameters",
+        "repeatable": true,
+        "desc": "function parameters",
+        "annotations": [
+            {"type": "USA,REL,CORRECT", "ref" :"cppcore.I.4", "msg": "name function parameters to avoid ambiguity"},
+            {"type": "USA,REL,CORRECT", "ref" :"cppcore.I.4,ECPP.18", "msg": "alias function parameters to avoid ambiguity (e.g. Path instead of std::string)"},
+            {"type": "USA,REL,CORRECT", "ref" :"cppcore.I.4", "msg": "be as explicit as possible when unit types are involved in function parameters"},
+            {"type": "PERF,USA", "ref" :"cppcore.F.20", "msg": "prefer return by value to output params"},
+            {"type": "MAINT,USA", "ref" :"cppcore.F.51", "msg": "prefer default argument to overloading"},
+            {"type": "REL", "ref" :"cppcore.C.140", "msg": "do not provide different default arguments for a virtual function and an overrider"},
+            {"type": "REL", "ref" :"recp.internal", "msg": "beware of decay (T param decays to pointer) or don't decay (const T& is bound to the array size) for template dependent array-like parameters"},
+            {"type": "REL", "ref" :"EMCPP.25", "msg": "don't std::forward an rvalue reference and don't std::move a forwarding/universal reference"},
+            {"type": "REL,USA", "ref" :"EMCPP.26,EMCPP.27", "msg": "avoid overloading on forwarding references but consider pass by const&, value, tag dispatching or constraints"},
+            {"type": "REL,USA", "ref" :"EMCPP.30", "msg": "beware using perfect forwarding with brace initializers, declaration-only integral const static data members, bitfields, overloaded function names"},
+            {"type": "PERF,MAINT", "ref" :"EMCPP.41", "msg": "consider the extra cost of pass-by-value vs pass-by-ref when parameter is copied depends on type (use dynamic alloc, assignment impl with memory reuse, optimization like SSO), rvalue/lvalue arg ratio, source size vs target size in copy operation"}
+        ],
+        "steps" : [
+            {"id" :"name", "desc": "parameter naming", "ref": "recpp.internal"},
+            {"id" :"type", "desc": "parameter type", "ref": "cppcore.I.F.15,EMCPP.41"},
+            {"id" :"weaktype", "desc": "check for weak type (void...)", "ref": "cppcore.I.4"},
+            {"id" :"array", "desc": "specific check for arrays decayed as pointers", "ref": "cppcore.I.13, cppcore.R.14"},
+            {"id" :"smartpointer", "desc": "check smartpointers are used for ownership", "ref": "cppcore.F.7, cppcore.R.30"},
+            {"id" :"cstring", "desc": "specific check for char*", "ref": "cppcore.F.25"},
+            {"id" :"collision", "desc": "check for parameter type collision", "ref": "cppcore.I.4,cppcore.I.23"},
+            {"id" :"boollist", "desc": "check for multiple bool parameters", "ref": "cppcore.I.4"},
+            {"id" :"argscount", "desc": "check for too many parameters", "ref": "cppcore.I.23"}
+        ]
+    },
+    {
+        "id": "func_ret",
+        "repeatable": false,
+        "desc": "function return type",
+        "annotations": [
+            {"type": "REL", "ref" :"recpp.internal", "msg": "beware of auto/decltype(auto) as return type for funtion template as it will trigger function instanciation where an error will not fall under SFINAE"}
+        ],
+        "steps" : [
+            {"id" :"type", "desc": "return type", "ref": "recpp.internal"},
+            {"id" :"ownership", "desc": "check for pointer-like return type", "ref": "cppcore.I.11,cppcore.F.26,cppcore.F.27"},
+            {"id" :"byvalue", "desc": "enforce byvalue return type with some exceptions", "ref": "recpp.internal,EMCPP.3"},
+            {"id" :"nonconst", "desc": "enforce non-const return type", "ref": "cppcore.F.20"},
+            {"id" :"rvalueref", "desc": "discourage return by &&", "ref": "cppcore.F.45"}
+        ]
+    },
+    {
+        "id": "func_attr",
+        "repeatable": false,
+        "desc": "function attributes",
+        "annotations": [],
+        "steps" : [
+            {"id" :"virtual", "desc": "function virtuality", "ref": "recpp.internal"},
+            {"id" :"constexpr", "desc": "function constexpr abilities", "ref": "cppcore.F.4,EMCPP.15"},
+            {"id" :"inline", "desc": "inline attribute", "ref": "cppcore.F.5"},
+            {"id" :"const", "desc": "function const correctness", "ref": "ECPP.3"},
+            {"id" :"noexcept", "desc": "function exception throwing", "ref": "cppcore.F.6,EMCPP.14"},
+            {"id" :"override", "desc": "function override", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "func_impl",
+        "repeatable": false,
+        "desc": "function implementation",
+        "annotations": [],
+        "steps" : [
+            {"id" :"pure", "desc": "pure method", "ref": "recpp.internal"}
+        ]
+    },
+    {
+        "id": "func_test",
+        "repeatable": false,
+        "desc": "function unit test",
+        "annotations": [
+            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "design each function unit test with the Arrange-Act-Assert pattern in mind"},
+            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "design each function unit test so that it tests a single scenario"},
+            {"type": "TEST,REL", "ref" :"recpp.internal", "msg": "test more than the straight scenario (i.e. good input, bad input, boundaries input, all paths, invariant check)"},
+            {"type": "TEST,PERF", "ref" :"recpp.internal", "msg": "design each function unit test to be small, fast, isolated, repeatable"},
+            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "refactor test if too much fakes or setup steps are needed"}
+        ],
+        "steps" : []
+    }
+]

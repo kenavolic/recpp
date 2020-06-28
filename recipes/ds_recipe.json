@@ -1,0 +1,28 @@
+[
+    {
+        "id": "ds_root",
+        "repeatable": false,
+        "desc": "data structure core description",
+        "annotations" : [
+            {"type": "REF", "ref" :"recpp.internal", "msg": "check the impl recipe if performance critical data structures"},
+            {"type": "REF", "ref" :"recpp.internal", "msg": "check the impl recipe if concurrency in involved in the data structure usage"},
+            {"type": "USA,INTEROP", "ref" :"cppcore.C.10X", "msg": "mimic stl container when designing a custom container"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "consider designing hybrid data structures (e.g. std::string with SSO)"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "think not only scalability but also locality (cache-friendly) when selecting a data structure"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "think of the layout of data populating the data structure  (e.g. data-oriented vector of bool might be better than a vector of object with bool attribute"},
+            {"type": "PERF,INTEROP", "ref" :"recpp.internal", "msg": "think of using custom allocator to allocate close to each other (condider std::pmr if needed)"},
+            {"type": "PERF,INTEROP", "ref" :"recpp.internal", "msg": "use std::vector for FILO (or custom implementation that better meet your requirements)"},
+            {"type": "PERF,INTEROP", "ref" :"recpp.internal", "msg": "use std::vector with index to front element for FIFO with reasonable max size (or custom implementation that better meet your requirements)"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "use std::vector::emplace_back instead of std::vector::push_back if possible"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "use std::vector::reserve if possible"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "cache lookup access to stl maps if frequenty reused more than once"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "use operator[] for update and insert for adding in stl associative containers"}
+        ],
+        "steps" : [
+            {"id" :"primary_concern", "desc": "primary concern for the data structure", "ref": "cppcore.SL.con.2, recpp.internal"},
+            {"id" :"random_access", "desc": "data access details", "ref": "cppcore.SL.con.2, recpp.internal"},
+            {"id" :"insertion_removal", "desc": "insertion/removal details", "ref": "cppcore.SL.con.2, recpp.internal"},
+            {"id" :"lookup", "desc": "lookup details", "ref": "cppcore.SL.con.2, recpp.internal"}
+        ]
+    }
+]
