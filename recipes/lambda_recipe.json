@@ -39,8 +39,8 @@
         "annotations": [],
         "steps" : [
             {"id" :"name", "desc": "captured item full description", "ref": "recpp.internal"},
-            {"id" :"ref", "desc": "ref capture for local scope lambda", "ref": "cppcore.F.52"},
-            {"id" :"nonref", "desc": "nonref capture for non-local scope lambda", "ref": "cppcore.F.52"},
+            {"id" :"ref", "desc": "ref capture for local scope lambda", "ref": "cppcore.F.52,CERT.EXP61-CPP"},
+            {"id" :"nonref", "desc": "nonref capture for non-local scope lambda", "ref": "cppcore.F.52,CERT.EXP61-CPP"},
             {"id" :"this", "desc": "this capture implies explicit capture", "ref": "cppcore.F.54"}
         ]
     },

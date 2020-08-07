@@ -52,8 +52,10 @@ template <
 // REL [cppcore.I.5,cppcore.I.6,cppcore.E.7]: Precondition check
 {% if "override" in attr.post -%} // USA [recpp.internal]: no harder precondition in overidden methods {% endif %}
 // REL [recpp.internal]: preconditions should be considered as programmer not recoverable error
-// REL,SEC [CERT.INT30-C...CERT.INT30-C]: for arithmetics, check under/overflow, division per zero, out of range index
+// REL,SEC [CERT.INT30-C...CERT.INT34-C]: for arithmetics, check unsigned integer wrapping, signed integer overflow, division per zero
+//                                        integer conversion errors
 // REL [recpp.internal]: for pointers, check nullity
+// REL [CERT.CTR50-CPP, CERT.STR53-CPP]: for lookup, check for out-of-bound indices
 // TIPS [recpp.internal]: in c++20, enforce the preconditions with [[expects...]] in function declaration
 //                        or [[assert...]] in function body
 
@@ -63,6 +65,14 @@ template <
 // TIPS [cppcore.E.4]: in c++20, enforce the invariant check with [[expects...]] in function declaration
 //                        or [[assert...]] in function body
 {% endif %}
+
+// ----------------- User inputs canonicalization/normaization -----------------
+// REL [SECCPP.9.4]: Reduce input by lossless/lossy conversion to its simplest from
+//                   e.g. Convert to string to absolute filepath
+
+// ----------------- User inputs sanitization -----------------
+// REL [SECCPP.9.4]: Sanitize input to meet the requirements of the function core
+//                   e.g. Replace all chars that are not in a whitelist in an input string
 
 // ----------------- User inputs check -----------------
 // REL [recpp.internal]: api user input checks should be considered as expected recoverable error
@@ -75,6 +85,9 @@ template <
 {%- if tparams %}
 // PERF [cppcore.T.60]: minimize a template's context dependencies
 // NOTE [cppcore.T.69]: inside a template, don't make an unqualified non-member function call unless you intend it to be a customization point
+// REL,CORRECT [CPPTPL.11.6]: with params as forwarding references, beware template parameters has reference type for lvalues
+// REL,CORRECT [CPPTPL.11.6]: be prepare to deal with template parameters beeing reference type (and pointer type?)
+// REL [CPPTPL.11.6]: use std::addressof if you need address of an object that depends on a template param (avoid operator& overload surprise)
 {%- endif %}
 {%- if type == "method" and "const" in attr.post %}
 // CON,REL [EMCPP.16]: make const member function thread-safe
@@ -104,6 +117,9 @@ template <
 // PERF [EMCPP.25]: move/forward rvalue/forwarding reference passed as parameter
 // PERF [recpp.internal]: do not name if possible to make use of c++ 17 guaranteed copy elision
 // REL [recpp.internal]: do not use std::remove_ref for container item, etc.
+{%- if tparams %}
+// REL [CPPTPL.11.6]: use auto or std::remove_ref to deal with possible dangling ref with template dependent return type
+{%- endif %}
 {% if "&" in  ret.rtype -%}
 // REL [recpp.internal]: do not return local variable
 {% endif %}

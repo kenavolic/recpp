@@ -358,6 +358,8 @@ class DesignRecipeCook(RecipeCook):
             self.pattern = "Composite, Visitor, Chain of Responsability"
         elif self.generic_yesno_input("Do you need a ABI stable or open–closed principle compliant interface", ref):
             self.pattern = "Bridge, Pimpl Idiom (see class recipe for possible implementation)"
+        elif self.generic_yesno_input("Do you need to switch between different implementations of an interface", ref):
+            self.pattern = "Bridge"
         elif self.generic_yesno_input("Do you need to add responsability to an object dynamically", ref):
             self.pattern = "Decorator"
         elif self.generic_yesno_input("Do you need to add generic or orthogonal feature to an existing class statically", ref):
@@ -366,6 +368,10 @@ class DesignRecipeCook(RecipeCook):
             self.pattern = "CRTP Idiom, discriminated union with Visitor"
         elif self.generic_yesno_input("Do you need to wrap one or many components to make it usable by another one", ref):
             self.pattern = "Adapter, Facade"
+        elif self.generic_yesno_input("Do you need to adapt an interface to make incompatible objects collaborate", ref):
+            self.pattern = "Adapter (with CRTP)"
+        elif self.generic_yesno_input("Do you need to define new types that have to meet the requirements of an existing interface", ref):
+            self.pattern = "Facade with CRTP"
         elif self.generic_yesno_input("Do you need to add access control to an existing object (e.g. make a class thread-safe, resilient to network access loss)", ref):
             self.pattern = "Proxy"
         elif self.generic_yesno_input("Do you need copy-on-write capabilities for performance", ref):
@@ -382,6 +388,10 @@ class DesignRecipeCook(RecipeCook):
             self.pattern = "CRTP Idiom"
         elif self.generic_yesno_input("Do you need to create a set of components out of a set of orthogonal concepts", ref):
             self.pattern = "Policy design, Mixins"
+        elif self.generic_yesno_input("Do you need to group a list of overloads (e.g. for visiting)", ref):
+            self.pattern = "Variadic Base Class with using directive"
+        elif self.generic_yesno_input("Do you need to regroup natural dependent properties of a type", ref):
+            self.pattern = "Traits Class"
         else:
             self.pattern = "Check GoF patterns and typical C++ idioms"
 

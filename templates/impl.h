@@ -54,8 +54,8 @@ inline auto finally(Callable && c) {
 //
 // Initialization
 //
-// REL,USA [cppcore.ES.23]: prefer the {}-initializer syntax 
-//                               because it prevents narrowing, most vexing parse, and is trully uniform
+// REL,USA [cppcore.ES.23, CERT.DCL53-CPP]: prefer the {}-initializer syntax 
+//                                          because it prevents narrowing, most vexing parse, and is trully uniform
 // NOTE [recpp.internal]: ={} gives copy initialization whereas {} gives direct initialization
 // NOTE [recpp.internal]: {} accepts explicit ctor, ={} does not
 {% raw %}

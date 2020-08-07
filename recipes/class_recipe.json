@@ -31,7 +31,11 @@
         "annotations": [
             {"type": "USA,EXT", "ref" :"cppcore.T.84", "msg": "consider using a non-generic class core implementation to provide an ABI-stable interface"},
             {"type": "PERF", "ref" :"ECPP.44", "msg": "factor members/methods non-dependent of template parameters out-of-class (base class)"},
-            {"type": "PERF", "ref" :"cppcore.T.62, recpp.internal", "msg": "prefer template parameters bound to methods if possible"}
+            {"type": "USA,CORRECT", "ref" :"CPPTPL.2.10", "msg": "use deduction guides to provide additional or fix existing class template argument deductions (e.g. template aggregates)"},
+            {"type": "PERF", "ref" :"cppcore.T.62, recpp.internal", "msg": "prefer template parameters bound to methods if possible"},
+            {"type": "USA", "ref" :"CPPTPL.19.2.1", "msg": "regroup natural dependent properties (that change together) of a type into traits class"},
+            {"type": "USA", "ref" :"CPPTPL.19.2.1", "msg": "use policy to encode some action orthogonal with respect to template arguments it is combined with"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "consider using member as base class to make use of ECBO for classes with templated data members"}
         ],
         "steps" : [
             {"id" :"name", "desc": "template parameter naming", "ref": "recpp.internal"}
@@ -41,12 +45,14 @@
         "id": "concrete",
         "repeatable": false,
         "desc": "concrete class description",
-        "annotations" : [],
+        "annotations" : [
+            {"type": "REL", "ref" :"CERT.MEM57-CPP", "msg": "avoid using default operation new for over-aligned types"}
+        ],
         "steps" : [
             {"id" :"abstraction", "desc": "class abstraction", "ref": "cppcore.I.27"},
             {"id" :"raii", "desc": "class resource holding", "ref": "cppcore.C.43"},
             {"id" :"specials", "desc": "class special members", "ref": "cppcore.C.21"},
-            {"id" :"alloc", "desc": "class custom allocators", "ref": "recpp.internal"},
+            {"id" :"alloc", "desc": "class custom allocators", "ref": "recpp.internal,CERT.MEM57-CPP"},
             {"id" :"init_list_ctor", "desc": "class ctor taking intializer list", "ref": "recpp.internal"}
         ]
     },

@@ -12,7 +12,8 @@
             {"type": "MAINT,PERF,", "ref" :"recpp.internal", "msg": "prefer algorithms implemented as data structure members when available"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "try to order the algorithm computations for best use of the cache"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "avoid virtual call in algorithms traversal loop"},
-            {"type": "REL", "ref" :"recpp.internal", "msg": "use auto&& generic container traversal in algorithm range-based for loop"}
+            {"type": "REL", "ref" :"recpp.internal", "msg": "use auto&& generic container traversal in algorithm range-based for loop"},
+            {"type": "TEST", "ref" :"recpp.internal", "msg": "test worst case, best case and avarage cases many times with many different inputs from source distributions"}
         ],
         "steps" : [
             {"id" :"primary_concern", "desc": "primary concern for algorithm", "ref": "recpp.internal"},
