@@ -1057,6 +1057,8 @@ def recipe(dish: str, with_annot: bool, whitelist: str, with_header=True):
 
     rec = load_recipe(dish)
     if with_annot:
+        if not "*" in whitelist:
+            whitelist += ",*"
         steps = [f"{a['type']} [{a['ref']}]: {a['msg']}" for meta in rec
                  for a in meta["annotations"]
                  if (whitelist == "*" or any(w in a['type']
