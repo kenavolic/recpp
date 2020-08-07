@@ -6,9 +6,9 @@
         "annotations" : [
             {"type": "REF", "ref" :"recpp.internal", "msg": "check the impl recipe for performance critical algorithms"},
             {"type": "REF", "ref" :"recpp.internal", "msg": "check the impl recipe if concurrency is involved in an algorithm"},
-            {"type": "PERF", "ref" :"recpp.internal", "msg": "choose algorithms that suits no more than your needs to avoid useless performance loss"},
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "choose algorithms that suit no more than your needs to avoid useless performance loss"},
             {"type": "PERF", "ref" :"CCS.7", "msg": "avoid worse than linear algorithm if possible"},
-            {"type": "PERF,REL", "ref" :"CCS.84", "msg": "prefer algorithm to handwritten loops (e.g. std::transform, std::for_each, std::ranges..."},
+            {"type": "PERF,REL", "ref" :"CCS.84", "msg": "prefer algorithm to handwritten loops (e.g. std::transform, std::for_each, std::ranges...)"},
             {"type": "MAINT,PERF,", "ref" :"recpp.internal", "msg": "prefer algorithms implemented as data structure members when available"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "try to order the algorithm computations for best use of the cache"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "avoid virtual call in algorithms traversal loop"},

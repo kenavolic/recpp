@@ -20,7 +20,7 @@
 {%- if ret.rtype != "void" %}
 /// \return TODO
 {%- endif %}
-/// \pre TODO (NOTE [CCS.74]: preconditions should be easily checkable by any caller and
+/// \pre TODO (NOTE [CCS.74]: preconditions should be easily checkable by any caller
 ///                           e.g. xml error-free syntax expectation in a file pointed by 
 ///                                 a string parameter is not reasonable
 ///                           e.g. expectations on the state of an object is reasonable)

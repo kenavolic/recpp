@@ -55,7 +55,7 @@ inline auto finally(Callable && c) {
 // Initialization
 //
 // REL,USA [cppcore.ES.23]: prefer the {}-initializer syntax 
-//                               beacause tt prevents narrowing, most vexing parse, and is trully uniform
+//                               because it prevents narrowing, most vexing parse, and is trully uniform
 // NOTE [recpp.internal]: ={} gives copy initialization whereas {} gives direct initialization
 // NOTE [recpp.internal]: {} accepts explicit ctor, ={} does not
 {% raw %}
@@ -117,7 +117,7 @@ void g(Container c)
     }
 
     // case 2
-    // use using to fallback to std versiob
+    // use using to fallback to std version
     using std::cbegin;
     using std::cend;
     std::for_each(cbegin(c), cend(c), ...);

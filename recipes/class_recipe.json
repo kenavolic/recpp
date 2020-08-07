@@ -5,7 +5,7 @@
         "desc": "class core description",
         "annotations" : [
             {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use a class when a function suffices (abstraction has a cost)"},
-            {"type": "MAINT,REL,USA,TEST", "ref" :"cppcore.C.10", "msg": "prefer concrete (aka value class)"},
+            {"type": "MAINT,REL,USA,TEST", "ref" :"cppcore.C.10", "msg": "prefer concrete class (aka value class)"},
             {"type": "MAINT", "ref" :"cppcore.C.2,CCS.41", "msg": "use struct if data members can vary independently"},
             {"type": "PERF", "ref" :"ECPP.31", "msg": "provide separate file for class declaration and definition"},
             {"type": "MAINT,USA,REL", "ref" :"CCS.5", "msg": "design classes with single responsability (Solid)"},

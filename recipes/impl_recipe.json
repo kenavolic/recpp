@@ -29,7 +29,7 @@
             {"type": "PERF", "ref" :"recpp.internal", "msg": "order switch by frequency"},
             {"type": "SEC", "ref" :"recpp.internal", "msg": "beware TOCTOU in conditionally checked blocks"},
             {"type": "MAINT", "ref" :"cppcore.ES.73", "msg": "prefer while to for when there is no obvious loop var"},
-            {"type": "PERF,REL", "ref" :"CCS.84", "msg": "prefer algorithm to handwritten loops (e.g. std::transform, std::for_each,std::ranges"},
+            {"type": "PERF,REL", "ref" :"CCS.84", "msg": "prefer algorithm to handwritten loops (e.g. std::transform, std::for_each,std::ranges)"},
             {"type": "MAINT", "ref" :"cppcore.ES.77", "msg": "consider a loop with a break as a good candidate for a function"},
             {"type": "MAINT", "ref" :"cppcore.ES.77", "msg": "consider a loop with a continue as a good candidate for an if statement"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "avoid data-dependant branching in critical loop"},
@@ -103,7 +103,7 @@
             {"type": "CON,PERF", "ref" :"cppcore.CP.43", "msg": "minimize time spent in a critical section"},
             {"type": "CON,REL", "ref" :"recpp.internal", "msg": "use std::lock + lock_guard or std::scoped_lock (c++17) to avoid deadlock"},
             {"type": "CON,REL", "ref" :"recpp.internal", "msg": "beware std::function that is not thread-compatible"},
-            {"type": "CON", "ref" :"recpp.internal", "msg": "design thread-safe block of code that does not call any thread-hostile function and, do whatever he wants with input of thread-safe type or not used by other threads but does not mutate an input of thread-compatible type"}
+            {"type": "CON", "ref" :"recpp.internal", "msg": "design thread-safe block of code that does not call any thread-hostile function and, do whatever it wants with input of thread-safe type or not used by other threads but does not mutate an input of thread-compatible type"}
         ],
         "steps" : [
         ]
@@ -139,7 +139,7 @@
         "repeatable": false,
         "desc": "code style",
         "annotations" : [
-            {"type": "MAINT", "ref" :"cppcore.NL.7", "msg": "make the leght of a name roughly proprtionnal to the length of its scope"},
+            {"type": "MAINT", "ref" :"cppcore.NL.7", "msg": "make the length of a name roughly proportional to the length of its scope"},
             {"type": "MAINT", "ref" :"cppcore.E.5", "msg": "don't use ALL_CAPS for enumerators"},
             {"type": "MAINT", "ref" :"recpp.internal", "msg": "name interface after functionnality they abstract, classes after how they implement the interface"},
             {"type": "MAINT", "ref" :"recpp.internal", "msg": "enforce style with tools not manuals (i.e. clang-format, clang-tidy)"}
