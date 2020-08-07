@@ -82,6 +82,16 @@ public:
     //      // CORRECT [cppcore.E.5]: throw if invariants cannot be set
     // {{"}"}}
 
+    // TIPS [recpp.internal]: perfect forwarding constructor implementation tips
+    //  template <typename U, typename = std::enable_if_t<std::is_convertible_v<U, SomeType>>>
+    //  {{classname}}(U&& param);
+    //
+    // template <typename U,
+    //         typename = std::enable_if_t<!std::is_base_of_v<{{classname}},std::decay_t<U>> && 
+    //                                    !std::is_same_v<SomeType,std::remove_ref_t<U>>>
+    //         >
+    // explicit {{classname}}(U&& param); 
+
     //
     // Destructors
     // REL [cppcore.C.31]: should release resources

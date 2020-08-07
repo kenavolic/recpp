@@ -3,6 +3,7 @@
 //
 
 // PORT,CORRECT [recpp.internal,CCS.24]: protect header against multiple inclusions with ifndef
+// REL [CERT.DCL51-CPP]: header guard without trailing underscores
 #ifndef MYLIB_{{classname}}_H 
 #define MYLIB_{{classname}}_H 
 

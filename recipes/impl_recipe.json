@@ -35,7 +35,8 @@
             {"type": "PERF", "ref" :"recpp.internal", "msg": "avoid data-dependant branching in critical loop"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "make the busiest loop the more nested"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "consider getting conditionals out of a loop"},
-            {"type": "PERF", "ref" :"recpp.internal,ECPP.27", "msg": "measure the delta between a local loop variable or a out-of-loop variable assigned at each round"}
+            {"type": "PERF", "ref" :"recpp.internal,ECPP.27", "msg": "measure the delta between a local loop variable or a out-of-loop variable assigned at each round"},
+            {"type": "REL", "ref" :"recpp.internal", "msg": "beware iterator invalidation inside loops (e.g. do not mutate a container)"}
         ],
         "steps" : [
         ]
@@ -61,7 +62,8 @@
             {"type": "REL", "ref" :"cppcore.ES.15,CSS.73", "msg": "throw by value, catch exception by ref"},
             {"type": "REL", "ref" :"recpp.internal", "msg": "catch at the closest location you can react"},
             {"type": "REL", "ref" :"ECPP.49", "msg": "consider a custom handler to handle memory allocation failure"},
-            {"type": "USA,INTEROP", "ref" :"recpp.internal,CCS.62,CCS.74", "msg": "use exceptions conversion utilities at boundaries"}
+            {"type": "USA,INTEROP", "ref" :"recpp.internal,CCS.62,CCS.74,CERT.ERR59-CPP", "msg": "use exceptions conversion utilities at execution boundaries"},
+            {"type": "REL", "ref" : "CERT.ERR58-CPP", "msg": "handle all exceptions before main (e.g. use guarded singleton, avoid std::string globals)"}
         ],
         "steps" : [
         ]
@@ -97,13 +99,17 @@
             {"type": "CON,REL", "ref" :"cppcore.CP.3", "msg": "minimize explicit sharing of writable data"},
             {"type": "CON,REL", "ref" :"cppcore.CP.31", "msg": "pass small amounts of data between threads by value, rather than by reference or pointer"},
             {"type": "CON,PERF", "ref" :"recpp.internal", "msg": "minimize sharing of data with same locality between threads (to avoid cache ping-pong)"},
-            {"type": "CON,REL", "ref" :"cppcore.CP.20", "msg": "use raii, never plain lock/unlock"},
+            {"type": "CON,REL", "ref" :"cppcore.CP.20, CERT.CON51-CPP", "msg": "use raii, never plain lock/unlock"},
             {"type": "CON,REL", "ref" :"cppcore.CP.42", "msg": "don't wait without a condition"},
             {"type": "CON,REL", "ref" :"cppcore.CP.22", "msg": "never call unknown code while holding a lock (e.g. a callback given as argument)"},
             {"type": "CON,PERF", "ref" :"cppcore.CP.43", "msg": "minimize time spent in a critical section"},
-            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "use std::lock + lock_guard or std::scoped_lock (c++17) to avoid deadlock"},
+            {"type": "CON,REL", "ref" :"CERT.CON53-CPP", "msg": "use std::lock + lock_guard or std::scoped_lock (c++17) to avoid deadlock"},
             {"type": "CON,REL", "ref" :"recpp.internal", "msg": "beware std::function that is not thread-compatible"},
-            {"type": "CON", "ref" :"recpp.internal", "msg": "design thread-safe block of code that does not call any thread-hostile function and, do whatever it wants with input of thread-safe type or not used by other threads but does not mutate an input of thread-compatible type"}
+            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "design thread-safe block of code that does not call any thread-hostile function and, do whatever it wants with input of thread-safe type or not used by other threads but does not mutate an input of thread-compatible type"},
+            {"type": "CON,REL", "ref" :"CERT.CON52-CPP", "msg": "prevent data races when accessing bit-fields from multiple threads"},
+            {"type": "CON,REL", "ref" :"CERT.CON54-CPP", "msg": "wrap functions that can spuriously wake up in a loop"},
+            {"type": "CON,REL", "ref" :"CERT.CON55-CPP", "msg": "preserve liveness when using conditional variable (e.g. use notify_all instead of notify_one)"},
+            {"type": "CON,REL", "ref" :"CERT.CON56-CPP", "msg": "do not speculatively lock a non-recursive mutex that is already owned by the calling thread"}
         ],
         "steps" : [
         ]

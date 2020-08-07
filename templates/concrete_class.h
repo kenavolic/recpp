@@ -10,13 +10,13 @@ public:
     {% if custom_allocators %}
     //
     // Custom alloc/dealloc
-    // REL [cppcore.C.40,CCS.45]: always overload matched allocation/deallocation pairs
+    // REL [cppcore.C.40,CCS.45,CERT.DCL54-CPP]: always overload matched allocation/deallocation pairs
     // REL [CCS.46]: consider providing all new/delete forms here
     void* operator new(std::size_t s) {
-        // CORRECT [ECPP.50...ECPP.52]: implement standard conforming new/delete pairs
+        // CORRECT [ECPP.50...ECPP.52,CERT.MEM55-CPP]: implement standard conforming new/delete pairs
     }
     void operator delete(void*) {
-        // CORRECT [ECPP.50...ECPP.52]: implement standard conforming new/delete pairs
+        // CORRECT [ECPP.50...ECPP.52,CERT.MEM55-CPP]: implement standard conforming new/delete pairs
     }
 
     {% endif -%}
@@ -43,13 +43,22 @@ public:
     {{classname}}() noexcept /*= custom, default*/;
     {% endif -%}
     {%- if invariant or raii %}
-    // TIPS [recpp.internal]: Constructor implementation tips
+    // TIPS [recpp.internal]: constructor implementation tips
     // REL [CCS.47]: initialize members in definition order
     // {{classname}}(/*params*/) : /*in order init list, delegating ctor or NSDMI*/ {{"{"}}
     //      // CORRECT [cppcore.E.5]: throw if invariants cannot be set
     // {{"}"}}
     {% endif -%}
     {%- if specials %}
+
+    // TIPS [recpp.internal]: perfect forwarding constructor implementation tips
+    // template <typename U, typename = std::enable_if_t<std::is_convertible_v<U, SomeType>>>
+    // {{classname}}(U&& param);
+    //
+    // template <typename U, typename... Args,
+    //         typename = std::enable_if_t<!std::is_same_v<std::decay_t<U>,{{classname}}>>
+    //         >
+    // explicit {{classname}}(U&& param, Args&&... args); 
 
     //
     // Special members

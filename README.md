@@ -138,6 +138,8 @@ Here are the references you can find in annotations:
  ***C++ Coding Standards, Sutter, Alexandrescu***.
 * *ECPP*: ***Effective C++, Meyers***
 * *EMCPP*: ***Effective Modern C++, Meyers***
+* *CPPTPL*: ***C++ Templates, The Complete  Guide, 2nd edition, Vandevoorde, Josuttis, Gregor***
+* *SECCPP*: ***Secure Coding in C and C++, Seacord***
 
 # Extensions
 

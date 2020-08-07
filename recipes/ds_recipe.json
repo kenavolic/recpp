@@ -16,7 +16,12 @@
             {"type": "PERF", "ref" :"recpp.internal", "msg": "use std::vector::emplace_back instead of std::vector::push_back if possible"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "use std::vector::reserve if possible"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "cache lookup access to stl maps if reused more than once"},
-            {"type": "PERF", "ref" :"recpp.internal", "msg": "use operator[] for update and insert for adding in stl associative containers"}
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "use operator[] for update and insert for adding in stl associative containers"},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "use a stack abstract data structure for balancing of symbol/tags, infix-to-postfix, do/undo..."},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "use a queue abstract data structure for job scheduling, simulation of real-world queue, async data transfer..."},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "use a priority queue abstract data structure for data compression, shortest path..."},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "use a graph abstract data structure for relationship between components, networking..."},
+            {"type": "USA", "ref" :"recpp.internal", "msg": "use a symbol table for network tables (arp, dns), data dictionary, compiler symbol tables..."}
         ],
         "steps" : [
             {"id" :"primary_concern", "desc": "primary concern for the data structure", "ref": "cppcore.SL.con.2, recpp.internal"},
