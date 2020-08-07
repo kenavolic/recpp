@@ -5,7 +5,7 @@
         "desc": "design core description",
         "annotations" : [
             {"type": "*", "ref" :"recpp.internal", "msg": "don't be dogmatic in your design strategy (e.g. OOP for one subsytem, data-oriented for another)"},
-            {"type": "*", "ref" :"recpp.internal", "msg": "think if your problem better solved as a data transformation problem or a conceptual representation of the reality?"},
+            {"type": "*", "ref" :"recpp.internal", "msg": "think if your problem is better solved as a data transformation problem or a conceptual representation of the reality?"},
             {"type": "MAINT,TEST", "ref" :"CCS.6", "msg": "Keep It (as) Stupid Simple (as possible)"},
             {"type": "MAINT,PERF", "ref" :"recpp.internal", "msg": "Don't Repeat Yourself (apart for breaking coupling or for performance)"},
             {"type": "*", "ref" :"recpp.internal", "msg": "think reponsabilities, collaboration, interface and constraints in your design"},

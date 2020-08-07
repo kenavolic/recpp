@@ -328,7 +328,7 @@ class DesignRecipeCook(RecipeCook):
 
     @strong_input(InputType.LIST, ["unit", "system"], "unit")
     def design_root_step_primary_concern_cb(self, ref):
-        return RecipeCook.custom_input("Enter primary concern about the design either whole system design or system unit design (system, unit default: unit)", ref)
+        return RecipeCook.custom_input("Enter primary concern about the design either whole system design or system unit design (system, unit, default: unit)", ref)
 
     def design_root_step_primary_concern(self, ref):
         self.concern = self.design_root_step_primary_concern_cb(ref)
@@ -341,7 +341,7 @@ class DesignRecipeCook(RecipeCook):
             self.pattern = "Client-Dispatcher-Server, Broker, Master-Slave, Proxy"
         elif self.generic_yesno_input("Do you build a system that has user interaction", ref):
             self.pattern = "MVC, Presentation-Abstraction-Control, ViewHandler, Command Processor"
-        elif self.generic_yesno_input("Do you build a system that process a stream of data", ref):
+        elif self.generic_yesno_input("Do you build a system that processes a stream of data", ref):
             self.pattern = "Pipe and Filters"
         elif self.generic_yesno_input("Do you build a system that requires cooperating components", ref):
             self.pattern = "Foward-Receiver, Publisher-Subscriber"
