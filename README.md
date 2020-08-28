@@ -146,3 +146,9 @@ Here are the references you can find in annotations:
 A feature-limited extension for vscode is available.
 
 Read the extension README in vscodeext directory.
+
+# Todo
+
+* Update smart pointer case according to [this so question](https://stackoverflow.com/questions/8114276/how-do-i-pass-a-unique-ptr-argument-to-a-constructor-or-a-function)
+* Add recommendations for testing (no excessive setup, single test per scenario, no chatty tests, excessive mock/fakes)
+* Add output examples in README
