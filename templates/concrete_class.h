@@ -237,6 +237,7 @@ namespace recpp {{"{"}}
 // TIPS [recpp.internal]: friend non-member functions could be necessary to handle
 //                        the issue of implicit conversions for template parameter
 //                        substitution
+// NOTES [recpp.internal]: adapt following code with template parameters
 {%- endif %}
 //
 

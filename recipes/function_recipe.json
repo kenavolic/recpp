@@ -27,7 +27,7 @@
             {"type": "USA", "ref" :"CPPTPL.19.2.1", "msg": "regroup natural dependent properties (that change together) of a type into trait class"},
             {"type": "USA", "ref" :"CPPTPL.19.2.1", "msg": "use policy to encode some action orthogonal with respect to template arguments it is combined with"},
             {"type": "USA", "ref" :"CPPTPL.19.2.3", "msg": "place policy parameters before traits parameters"},
-            {"type": "USA", "ref" :"CPPTPL.11.6", "msg": "be prepared to deal with incompete type (e.g. defer evaluation to POI by making a member function template)"}
+            {"type": "USA", "ref" :"CPPTPL.11.6", "msg": "be prepared to deal with incomplete type (e.g. defer evaluation to POI by making a member function template)"}
         ],
         "steps" : [
             {"id" :"name", "desc": "template parameter full description", "ref": "recpp.internal"}
@@ -49,7 +49,7 @@
             {"type": "REL,USA", "ref" :"EMCPP.26,EMCPP.27", "msg": "avoid overloading on forwarding references but consider pass by const&, value, tag dispatching or constraints"},
             {"type": "REL,USA", "ref" :"EMCPP.30", "msg": "beware using perfect forwarding with brace initializers, declaration-only integral const static data members, bitfields, overloaded function names"},
             {"type": "PERF,MAINT", "ref" :"EMCPP.41", "msg": "consider the extra cost of pass-by-value vs pass-by-ref when parameter is copied depends on type (use dynamic alloc, assignment impl with memory reuse, optimization like SSO), rvalue/lvalue arg ratio, source size vs target size in copy operation"},
-            {"type": "REL,USA", "ref" :"CPPTPL.11.6", "msg": "for inout/out parameters depending on template parameters, beware const template argument could be passed"}
+            {"type": "REL,USA", "ref" :"CPPTPL.11.6", "msg": "for in/out parameters depending on template parameters, beware const template argument could be passed"}
         ],
         "steps" : [
             {"id" :"name", "desc": "parameter naming", "ref": "recpp.internal"},

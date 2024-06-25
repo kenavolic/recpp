@@ -344,7 +344,7 @@ class DesignRecipeCook(RecipeCook):
         elif self.generic_yesno_input("Do you build a system that processes a stream of data", ref):
             self.pattern = "Pipe and Filters"
         elif self.generic_yesno_input("Do you build a system that requires cooperating components", ref):
-            self.pattern = "Foward-Receiver, Publisher-Subscriber"
+            self.pattern = "Forward-Receiver, Publisher-Subscriber"
         else:
             self.pattern = "Whole-Part, Layers, Blackboard, Microkernel, Reflection, ..."
 
@@ -1122,7 +1122,7 @@ if __name__ == "__main__":
     print(_recpp_header)
 
     try:
-        if args.act is 'cook':
+        if args.act == 'cook':
             cook(dish=args.dish, display_live_annot=args.annot, odir=args.odir)
         else:
             recipe(dish=args.dish, with_annot=args.annot,

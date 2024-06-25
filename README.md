@@ -26,7 +26,7 @@ The following dishes can be cooked in recpp kitchen:
 * python >= 3.6
 * jinja2
 ~~~
-python3.6 -m pip install jinja2
+python -m pip install jinja2
 ~~~
 
 # Use cases
@@ -45,31 +45,31 @@ There are two main modes of execution:
 
 * Generating a class with [annotations](#Annotations) in the generated pseudo-code
 ~~~
-python3.6 recpp.py -d class
+python recpp.py -d class
 ~~~
 * Generating a function with [annotations](#Annotations) displayed step-by-step on console
 ~~~
-python3.6 recpp.py -d function -a
+python recpp.py -d function -a
 ~~~
 * Generating a lambda in a file
 ~~~
-python3.6 recpp.py -d lambda -o /tmp/recpp
+python recpp.py -d lambda -o /tmp/recpp
 ~~~
 * Generating [annotated](#Annotations) code snippets for the core implementation
 ~~~
-python3.6 recpp.py -d impl -a
+python recpp.py -d impl -a
 ~~~
 
 ## Decision making
 
 * Suggesting some patterns/idioms to a design problem
 ~~~
-python3.6 recpp.py -d design -a
+python recpp.py -d design -a
 ~~~
 * Suggesting a standard data structure or algorithm
 ~~~
-python3.6 recpp.py -d ds -a
-python3.6 recpp.py -d algo -a
+python recpp.py -d ds -a
+python recpp.py -d algo -a
 ~~~
 
 ## Aggregating tips
@@ -78,19 +78,19 @@ python3.6 recpp.py -d algo -a
 
 * List all tips needed to build a class
 ~~~
-python3.6 recpp.py -d class -l -a
+python recpp.py -d class -l -a
 ~~~
 * List performance and reliability tips to build a function
 ~~~
-python3.6 recpp.py -d function -l -a -k PERF,REL
+python recpp.py -d function -l -a -k PERF,REL
 ~~~
 * List concurrency tips for your core implementation
 ~~~
-python3.6 recpp.py -d impl -l -a -k CON
+python recpp.py -d impl -l -a -k CON
 ~~~
 * List all performance tips
 ~~~
-python3.6 recpp.py -d all -l -a -k PERF
+python recpp.py -d all -l -a -k PERF
 ~~~
 
 # Annotations

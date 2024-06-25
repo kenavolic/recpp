@@ -23,7 +23,7 @@
         "desc": "statement",
         "annotations" : [
             {"type": "MAINT", "ref" :"recpp.internal", "msg": "encapsulate conditionals in function and prefer positive conditionals"},
-            {"type": "PERF", "ref" :"cppcore.ES.70", "msg": "prefer swith over if"},
+            {"type": "PERF", "ref" :"cppcore.ES.70", "msg": "prefer switch over if"},
             {"type": "REL", "ref" :"cppcore.ES.79", "msg": "use default switch case to handle common case only"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "in if/else statement put straight case in the if"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "order switch by frequency"},

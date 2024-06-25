@@ -6,6 +6,7 @@
 // REL [CERT.DCL51-CPP]: header guard without trailing underscores
 #ifndef MYLIB_{{classname}}_H 
 #define MYLIB_{{classname}}_H 
+// or #pragma once if supported
 
 {% for item in annotations -%}
 // {{ item.type }} [{{ item.ref}}]: {{ item.msg }}

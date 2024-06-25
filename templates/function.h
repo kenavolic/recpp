@@ -66,7 +66,7 @@ template <
 //                        or [[assert...]] in function body
 {% endif %}
 
-// ----------------- User inputs canonicalization/normaization -----------------
+// ----------------- User inputs canonicalization/normalization -----------------
 // REL [SECCPP.9.4]: Reduce input by lossless/lossy conversion to its simplest from
 //                   e.g. Convert to string to absolute filepath
 
@@ -96,6 +96,9 @@ template <
 {% if type == "method" and not "noexcept" in attr.post -%}
 // a- Throwable code that does not modify invariant
 // b- Noexcept code that modifies invariant
+// TIPS [recpp.internal]: Mix throwable code with non-throwable code by using a RAII-like utility
+//                       (unique_ptr, stack unwinder) that ensures that invariant are reset in case of
+//                       exception
 {% endif %}
 
 // ----------------- Post-check -----------------
