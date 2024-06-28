@@ -29,7 +29,7 @@ namespace recpp {{"{"}}
 
 {{classname}}& {{classname}}=(const {{classname}}& rhs) {{"{"}}
     if (!rhs._impl) _impl.reset();
-    else if (!_impl) _impl = std::make_unique(*rhs.pImpl);
+    else if (!_impl) _impl = std::make_unique(*rhs._impl);
     else *_impl = *rhs._impl;
 {{"}"}}
 {% endif %}

@@ -140,7 +140,7 @@ public:
 
     void swap({{classname}}& rhs) noexcept;
     // TIPS [recpp.internal]: swap implementation tips
-    // void swap({{classname}}&& rhs) {{"{"}}
+    // void swap({{classname}}& rhs) {{"{"}}
     //     using std::swap;  // CORRECT [cppcore.C.165]: make std::swap available
     //     //...
     // {{"}"}}

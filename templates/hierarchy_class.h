@@ -22,6 +22,7 @@ public:
         return std::unique_ptr<Derived>(this->cloneImpl());
     }
 
+    ClonableBase() = default;
     virtual ~ClonableBase() = default;
     ClonableBase& operator=(const ClonableBase&) = delete;
     ClonableBase(ClonableBase&&) = delete;

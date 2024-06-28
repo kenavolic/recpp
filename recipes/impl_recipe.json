@@ -93,7 +93,7 @@
             {"type": "CON,PERF", "ref" :"recpp.internal", "msg": "think data-oriented design (inherently more suited to concurrency)"},
             {"type": "CON,MAINT,USA", "ref" :"cppcore.CP.4,EMCPP.241", "msg": "prefer use of c++ task-based api (i.e. std::async, std::packaged_task) to thread-based api"},
             {"type": "CON,MAINT", "ref" :"recpp.internal", "msg": "separate concurrency code (e.g. proxy class for thread-safety)"},
-            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "think transaction (Atomicity, Consitency, Isolation, Durability)"},
+            {"type": "CON,REL", "ref" :"recpp.internal", "msg": "think transaction (Atomicity, Consistency, Isolation, Durability)"},
             {"type": "CON,PERF", "ref" :"cppcore.CP.41", "msg": "minimize thread creation and destruction (use of thread pools?)"},
             {"type": "CON,REL", "ref" :"cppcore.CP.23", "msg": "think of a joining thread as a scoped container (aka std::jthread)"},
             {"type": "CON,REL", "ref" :"cppcore.CP.3", "msg": "minimize explicit sharing of writable data"},
@@ -135,7 +135,8 @@
             {"type": "PERF", "ref" :"recpp.internal", "msg": "pack your struct"},
             {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use std::endl (flush)"},
             {"type": "PERF", "ref" :"ECPP.28", "msg": "do not use dynamic_cast in performance critical code"},
-            {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use exception throwing in performance critical code where the error case arises often"}
+            {"type": "PERF", "ref" :"recpp.internal", "msg": "do not use exception throwing in performance critical code where the error case arises often"},
+            {"type": "PERF,CORRECT", "ref" :"recpp.internal", "msg": "use std::string_view to refer to character sequence where possible"}
         ],
         "steps" : [
         ]
