@@ -65,7 +65,10 @@ public:
     //
 
     // REL [cppcore.C.31]: should release resources
-    // REL [CCS.51,ECPP.8]: dtors never fail (noexcept)
+    // REL [CCS.51,ECPP.8]: dtors never fail
+    // REL [recpp.internal]: do not state noexcept(true) explicitly as it could hide the addition of a member
+    //                       with a throw dtor that would switch the parent dtor to
+    //                       noexcept(false) implicitly
     ~{{classname}}() /*= custom, default*/;
     {%- if raii %}
     // USA [ECPP.14]: enable copy if needed

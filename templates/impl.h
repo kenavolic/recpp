@@ -11,6 +11,7 @@
 //
 
 // Basic not optimized version of an raii wrapper
+// See https://github.com/kenavolic/misc_cpp/tree/main/safeout for unique_ptr based solution
 {% raw %}
 template <typename Callable>
 class RaiiWrapper{
@@ -56,8 +57,8 @@ inline auto finally(Callable && c) {
 //
 // REL,USA [cppcore.ES.23, CERT.DCL53-CPP]: prefer the {}-initializer syntax 
 //                                          because it prevents narrowing, most vexing parse, and is trully uniform
-// NOTE [recpp.internal]: ={} gives copy initialization whereas {} gives direct initialization
-// NOTE [recpp.internal]: {} accepts explicit ctor, ={} does not
+// NOTE [recpp.internal]: = {} gives copy initialization whereas {} gives direct initialization
+// NOTE [recpp.internal]: {} accepts explicit ctor, = {} does not
 {% raw %}
 auto val = {1,2,3}; // Get an initializer list to forward to std::make_xxx
 {% endraw %}

@@ -39,6 +39,7 @@ private:
 {% raw %}
 class Uncopyable {
     public:
+        Uncopyable() = default;
         virtual ~Uncopyable() = default;
         Uncopyable& operator=(const Uncopyable&) = delete;
         Uncopyable(const Uncopyable&) = delete;
@@ -96,9 +97,13 @@ public:
     //
     // Destructors
     // REL [cppcore.C.31]: should release resources
-    // REL [CCS.51,ECPP.8]: dtors never fail (noexcept)
+    // REL [CCS.51,ECPP.8]: dtors never fail
+    // REL [recpp.internal]: do not state noexcept(true) explicitly as it could hide the addition of a member
+    //                       with a throw dtor that would switch the parent dtor to
+    //                       noexcept(false) implicitly
     // REL [ECPP.9]: don't call virtual functions
     // Destructor if needed
+    // ~{{classname}}() override = default;
 
     {% endif -%}
 
@@ -154,7 +159,7 @@ namespace recpp {{"{"}}
 // USA [cppcore.C.161,cppcore.C.168,CCS.44,ECPP.23]: non-members functions
 
 // Insertion operator implementation tips
-// print is the virtual method implemented with nvi or not in the hierarchy
+// print is the virtual method implemented with nvi (or not) in the hierarchy
 // template <typename T>
 // inline auto operator << (std::ostream& os, const T& obj) -> decltype(std::declval<T>().print(os), os)
 //{

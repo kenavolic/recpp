@@ -98,7 +98,7 @@ template <
 // b- Noexcept code that modifies invariant
 // TIPS [recpp.internal]: Mix throwable code with non-throwable code by using a RAII-like utility
 //                       (unique_ptr, stack unwinder) that ensures that invariant are reset in case of
-//                       exception
+//                       exception (e.g https://github.com/kenavolic/misc_cpp/tree/main/safeout)
 {% endif %}
 
 // ----------------- Post-check -----------------
