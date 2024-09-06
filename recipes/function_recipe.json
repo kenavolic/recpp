@@ -110,7 +110,8 @@
             {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "design each function unit test so that it tests a single scenario"},
             {"type": "TEST,REL", "ref" :"recpp.internal", "msg": "test more than the straight scenario (i.e. good input, bad input, boundaries input, all paths, invariant check)"},
             {"type": "TEST,PERF", "ref" :"recpp.internal", "msg": "design each function unit test to be small, fast, isolated, repeatable"},
-            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "refactor test if too much fakes or setup steps are needed"}
+            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "refactor test if too much fakes or setup steps are needed"},
+            {"type": "TEST,MAINT", "ref" :"recpp.internal", "msg": "each bug must lead to a regression unit test"}
         ],
         "steps" : []
     }
